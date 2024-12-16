@@ -1,0 +1,28 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: hana111ClusterYaml
+  region: ap-southeast-1
+  version: "1.31"
+
+vpc:
+  subnets:
+    public:
+      ap-southeast-1a:
+        id: subnet-0e25236e4263a6184 
+      ap-southeast-1b:
+        id: subnet-08a20fe9e384c8db7
+    private:
+      ap-southeast-1a:
+        id: subnet-0b77bcf880a5966e7
+      ap-southeast-1b:
+        id: subnet-01f7440dcbe4fd15d
+
+managedNodeGroups:
+  - name: eks-cluster111-ng111
+    instanceType: t3.medium
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 4
+    amiFamily: AmazonLinux2
